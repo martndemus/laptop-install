@@ -1,0 +1,23 @@
+# Formulae
+git
+git-delta
+lazygit
+mise
+neovim
+ripgrep
+starship
+tree-sitter
+tree-sitter-cli
+zsh-autocomplete
+
+# Casks
+1password
+1password-cli
+claude
+firefox
+firefox@developer-edition
+font-jetbrains-mono-nerd-font
+ghostty
+google-chrome
+google-chrome@canary
+safari-technology-preview
