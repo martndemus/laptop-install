@@ -1,5 +1,5 @@
 #!/bin/bash
-# Install Homebrew and packages from brew-packages.txt
+# Install Homebrew and packages from brew/{formulae,casks}
 set -euo pipefail
 
 here="$(dirname "$0")"
@@ -16,12 +16,8 @@ else
   echo "Homebrew already installed."
 fi
 
-packages=()
-while IFS= read -r line; do
-  line="${line%%#*}"
-  line="${line#"${line%%[![:space:]]*}"}"
-  line="${line%"${line##*[![:space:]]}"}"
-  [[ -n "$line" ]] && packages+=("$line")
-done < "$here/../brew-packages.txt"
+mapfile -t formulae < "$here/../brew/formulae"
+brew install "${formulae[@]}"
 
-brew install "${packages[@]}"
+mapfile -t casks < "$here/../brew/casks"
+brew install --cask "${casks[@]}"
