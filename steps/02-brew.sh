@@ -16,6 +16,9 @@ else
   echo "Homebrew already installed."
 fi
 
+# zsh compaudit flags group-writable completion dirs; 755 removes group write
+chmod 755 /opt/homebrew/share
+
 formulae=()
 while IFS= read -r pkg; do formulae+=("$pkg"); done < "$here/../brew/formulae"
 brew install "${formulae[@]}"
