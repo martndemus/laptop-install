@@ -14,8 +14,13 @@ fi
 
 echo "Linking dotfiles..."
 git -C "$dotfiles" ls-files | while read -r f; do
+  dest="$HOME/.config/$f"
   mkdir -p "$HOME/.config/$(dirname "$f")"
-  ln -sf "$dotfiles/$f" "$HOME/.config/$f"
+  if [[ -e "$dest" || -L "$dest" ]] && [[ "$(readlink "$dest")" != "$dotfiles/$f" ]]; then
+    mkdir -p "$HOME/.config/.backup/$(dirname "$f")"
+    mv "$dest" "$HOME/.config/.backup/$f"
+  fi
+  ln -sf "$dotfiles/$f" "$dest"
 done
 
 echo "Ensuring ~/.zshenv..."
