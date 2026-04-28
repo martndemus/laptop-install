@@ -16,8 +16,10 @@ else
   echo "Homebrew already installed."
 fi
 
-mapfile -t formulae < "$here/../brew/formulae"
+formulae=()
+while IFS= read -r pkg; do formulae+=("$pkg"); done < "$here/../brew/formulae"
 brew install "${formulae[@]}"
 
-mapfile -t casks < "$here/../brew/casks"
+casks=()
+while IFS= read -r pkg; do casks+=("$pkg"); done < "$here/../brew/casks"
 brew install --cask "${casks[@]}"
