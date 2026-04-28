@@ -20,7 +20,7 @@ Each step lives in `steps/NN-name.sh` and can also be run standalone:
 | Step | Description |
 | --- | --- |
 | `clt` | Install / update Xcode Command Line Tools |
-| `brew` | Install Homebrew and the packages listed in `brew-packages.txt` |
+| `brew` | Install Homebrew and the packages listed in `brew/formulae` and `brew/casks` |
 | `macos-appstore-apps` | Install Mac App Store apps via `mas` |
 | `macos-settings` | Apply macOS `defaults` (Dock, Finder, trackpad, keyboard, Safari, …) |
 
@@ -28,7 +28,7 @@ Steps are auto-discovered from the `steps/` directory and ordered by their numer
 
 ## Customizing packages
 
-Edit `brew-packages.txt`. One package per line; `#` starts a comment. Homebrew auto-detects formulae vs. casks, so no `--cask` flag is needed.
+Edit `brew/formulae` (CLI tools) or `brew/casks` (GUI apps). One package per line.
 
 ## Notes
 
