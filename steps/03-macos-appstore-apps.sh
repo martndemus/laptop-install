@@ -1,11 +1,15 @@
 #!/bin/bash
-# Install Mac App Store apps via mas
+# Install Mac App Store apps via mas, reading IDs from mac/apps
 set -euo pipefail
+
+here="$(dirname "$0")"
 
 [[ "$(uname -s)" == "Darwin" ]] || { echo "Skipping: not macOS."; exit 0; }
 
 brew install mas
 
-mas install 1569813296 # 1Password for Safari
-mas install 6745342698 # uBlock Origin Lite
-mas install 1606897889 # Consent-O-Matic
+while IFS= read -r line; do
+  id="${line%%#*}"
+  id="${id%"${id##*[![:space:]]}"}"
+  [[ -n "$id" ]] && mas install "$id"
+done < "$here/../mac/apps"
