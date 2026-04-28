@@ -26,3 +26,5 @@ brew install "${formulae[@]}"
 casks=()
 while IFS= read -r pkg; do casks+=("$pkg"); done < "$here/../brew/casks"
 brew install --cask "${casks[@]}"
+
+brew cleanup --prune=all
