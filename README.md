@@ -20,6 +20,7 @@ Each step lives in `steps/NN-name.sh` and can also be run standalone:
 | Step | Description |
 | --- | --- |
 | `clt` | Install / update Xcode Command Line Tools |
+| `dotfiles` | Clone `martndemus/dotfiles` to `~/Projects/dotfiles` and symlink each tracked file into `~/.config/` (existing files are moved to `~/.config/.backup/`); also writes `~/.zshenv` to point `ZDOTDIR` at `~/.config/zsh` |
 | `brew` | Install Homebrew and the packages listed in `brew/formulae` and `brew/casks` |
 | `macos-appstore-apps` | Install Mac App Store apps via `mas` |
 | `macos-settings` | Apply macOS `defaults` (Dock, Finder, trackpad, keyboard, Safari, …) |
