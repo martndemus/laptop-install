@@ -23,6 +23,7 @@ Each step lives in `steps/NN-name.sh` and can also be run standalone:
 | `brew` | Install Homebrew and the packages listed in `brew/formulae` and `brew/casks` |
 | `macos-appstore-apps` | Install Mac App Store apps via `mas` |
 | `macos-settings` | Apply macOS `defaults` (Dock, Finder, trackpad, keyboard, Safari, …) |
+| `install-shortcut` | Install a `laptop-update` command in `~/.local/bin/` that re-runs `install.sh` from anywhere |
 
 Steps are auto-discovered from the `steps/` directory and ordered by their numeric prefix. To add a new step, drop in a new file like `steps/05-dotfiles.sh` — no edit to `install.sh` required.
 
