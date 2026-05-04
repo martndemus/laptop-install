@@ -62,7 +62,7 @@ for i in "${!ALL_STEPS[@]}"; do
     pad=$(( (80 - ${#label}) / 2 ))
     rpad=$(( 80 - ${#label} - pad ))
     echo ""
-    printf "${BOLD}%s%s%s${RESET}\n" \
+    printf "${BOLD}%s${BLUE}%s${RESET}${BOLD}%s${RESET}\n" \
       "$(printf '%*s' "$pad" '' | tr ' ' '=')" \
       "$label" \
       "$(printf '%*s' "$rpad" '' | tr ' ' '=')"
@@ -75,7 +75,7 @@ label=" Done. "
 pad=$(( (80 - ${#label}) / 2 ))
 rpad=$(( 80 - ${#label} - pad ))
 echo ""
-printf "${BOLD}${GREEN}%s%s%s${RESET}\n" \
+printf "${BOLD}%s${GREEN}%s${RESET}${BOLD}%s${RESET}\n" \
   "$(printf '%*s' "$pad" '' | tr ' ' '=')" \
   "$label" \
   "$(printf '%*s' "$rpad" '' | tr ' ' '=')"
