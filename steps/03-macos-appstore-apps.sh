@@ -8,6 +8,7 @@ here="$(dirname "$0")"
 
 brew install mas
 
+echo "==> Installing App Store apps..."
 while IFS= read -r line; do
   id="${line%%#*}"
   id="${id%"${id##*[![:space:]]}"}"

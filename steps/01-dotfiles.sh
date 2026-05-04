@@ -5,14 +5,14 @@ set -euo pipefail
 dotfiles="$HOME/Projects/dotfiles"
 
 if [[ ! -d "$dotfiles/.git" ]]; then
-  echo "Cloning dotfiles..."
+  echo "==> Cloning dotfiles..."
   git clone "https://github.com/martndemus/dotfiles.git" "$dotfiles"
 else
-  echo "Pulling latest dotfiles..."
+  echo "==> Pulling latest dotfiles..."
   git -C "$dotfiles" pull --ff-only
 fi
 
-echo "Linking dotfiles..."
+echo "==> Linking dotfiles..."
 git -C "$dotfiles" ls-files | while read -r f; do
   dest="$HOME/.config/$f"
   mkdir -p "$HOME/.config/$(dirname "$f")"
@@ -23,7 +23,7 @@ git -C "$dotfiles" ls-files | while read -r f; do
   ln -sf "$dotfiles/$f" "$dest"
 done
 
-echo "Ensuring ~/.zshenv..."
+echo "==> Ensuring ~/.zshenv..."
 cat > "$HOME/.zshenv" <<'EOF'
 export ZDOTDIR="$HOME/.config/zsh"
 [ -f "$ZDOTDIR/.zshenv" ] && . "$ZDOTDIR/.zshenv"

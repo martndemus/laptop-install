@@ -56,7 +56,22 @@ should_run() {
 for i in "${!ALL_STEPS[@]}"; do
   step="${ALL_STEPS[$i]}"
   if should_run "$step"; then
-    echo "==> Running step: $step"
+    label=" Running step: $step "
+    pad=$(( (80 - ${#label}) / 2 ))
+    rpad=$(( 80 - ${#label} - pad ))
+    echo ""
+    printf '%*s' "$pad" '' | tr ' ' '='
+    printf '%s' "$label"
+    printf '%*s\n' "$rpad" '' | tr ' ' '='
+    echo ""
     "${STEP_FILES[$i]}"
   fi
 done
+
+label=" Done. "
+pad=$(( (80 - ${#label}) / 2 ))
+rpad=$(( 80 - ${#label} - pad ))
+echo ""
+printf '%*s' "$pad" '' | tr ' ' '='
+printf '%s' "$label"
+printf '%*s\n' "$rpad" '' | tr ' ' '='

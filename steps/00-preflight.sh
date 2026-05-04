@@ -25,6 +25,7 @@ if xcode-select -p &>/dev/null; then
   exit 0
 fi
 
-printf "\n\n    Command Line Tools not found. Complete the installation, then re-run this script...\n"
+echo ""
+echo "    Command Line Tools not found. Complete the installation, then re-run this script..."
 xcode-select --install
 exit 1

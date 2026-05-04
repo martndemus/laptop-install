@@ -14,7 +14,7 @@ exec "$repo/install.sh" "\$@"
 EOF
 chmod +x "$bin_dir/laptop-update"
 
-echo "Installed laptop-update to $bin_dir/laptop-update"
+echo "==> Installed laptop-update to $bin_dir/laptop-update"
 
 case ":$PATH:" in
   *":$bin_dir:"*) ;;
