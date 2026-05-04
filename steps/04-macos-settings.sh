@@ -1,6 +1,8 @@
 #!/bin/bash
 # Apply macOS defaults
 set -euo pipefail
+# shellcheck source=../lib/colors.sh
+source "$(cd "$(dirname "$0")" && pwd)/../lib/colors.sh"
 
 [[ "$(uname -s)" == "Darwin" ]] || { echo "Skipping: not macOS."; exit 0; }
 
@@ -74,6 +76,6 @@ if defaults write com.apple.Safari IncludeDevelopMenu -bool true 2>/dev/null; th
   defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
   defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
 else
-  echo "Warning: Skipped Safari settings: grant Full Disk Access to your terminal app in"
-  echo "  System Settings > Privacy & Security > Full Disk Access, then re-run."
+  echo "${YELLOW}Warning: Skipped Safari settings: grant Full Disk Access to your terminal app in"
+  echo "  System Settings > Privacy & Security > Full Disk Access, then re-run.${RESET}"
 fi

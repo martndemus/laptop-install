@@ -3,6 +3,8 @@ set -euo pipefail
 
 here="$(cd "$(dirname "$0")" && pwd)"
 steps_dir="$here/steps"
+# shellcheck source=lib/colors.sh
+source "$here/lib/colors.sh"
 
 # Discover steps from steps/NN-name.sh, ordered by filename.
 ALL_STEPS=()
@@ -60,9 +62,10 @@ for i in "${!ALL_STEPS[@]}"; do
     pad=$(( (80 - ${#label}) / 2 ))
     rpad=$(( 80 - ${#label} - pad ))
     echo ""
-    printf '%*s' "$pad" '' | tr ' ' '='
-    printf '%s' "$label"
-    printf '%*s\n' "$rpad" '' | tr ' ' '='
+    printf "${BOLD}%s%s%s${RESET}\n" \
+      "$(printf '%*s' "$pad" '' | tr ' ' '=')" \
+      "$label" \
+      "$(printf '%*s' "$rpad" '' | tr ' ' '=')"
     echo ""
     "${STEP_FILES[$i]}"
   fi
@@ -72,6 +75,7 @@ label=" Done. "
 pad=$(( (80 - ${#label}) / 2 ))
 rpad=$(( 80 - ${#label} - pad ))
 echo ""
-printf '%*s' "$pad" '' | tr ' ' '='
-printf '%s' "$label"
-printf '%*s\n' "$rpad" '' | tr ' ' '='
+printf "${BOLD}${GREEN}%s%s%s${RESET}\n" \
+  "$(printf '%*s' "$pad" '' | tr ' ' '=')" \
+  "$label" \
+  "$(printf '%*s' "$rpad" '' | tr ' ' '=')"

@@ -1,12 +1,14 @@
 #!/bin/bash
 # Pre-flight: ensure Full Disk Access and macOS Command Line Tools are available
 set -euo pipefail
+# shellcheck source=../lib/colors.sh
+source "$(cd "$(dirname "$0")" && pwd)/../lib/colors.sh"
 
 [[ "$(uname -s)" == "Darwin" ]] || { echo "Skipping: not macOS."; exit 0; }
 
 printf "==> Checking for Full Disk Access ..."
 if sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "SELECT 1" &>/dev/null; then
-  echo " granted!"
+  echo "${GREEN} granted!${RESET}"
 else
   echo ""
   echo "    Full Disk Access is required."
@@ -21,7 +23,7 @@ fi
 
 printf "==> Checking for Command Line Tools ..."
 if xcode-select -p &>/dev/null; then
-  echo " found!"
+  echo "${GREEN} found!${RESET}"
   exit 0
 fi
 
