@@ -7,7 +7,6 @@ dotfiles="$HOME/Projects/dotfiles"
 if [[ ! -d "$dotfiles/.git" ]]; then
   echo "Cloning dotfiles..."
   git clone "https://github.com/martndemus/dotfiles.git" "$dotfiles"
-  git -C "$dotfiles" remote set-url origin "git@github.com:martndemus/dotfiles.git"
 else
   echo "Dotfiles repo already cloned."
 fi
