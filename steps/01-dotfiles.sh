@@ -8,7 +8,8 @@ if [[ ! -d "$dotfiles/.git" ]]; then
   echo "Cloning dotfiles..."
   git clone "https://github.com/martndemus/dotfiles.git" "$dotfiles"
 else
-  echo "Dotfiles repo already cloned."
+  echo "Pulling latest dotfiles..."
+  git -C "$dotfiles" pull --ff-only
 fi
 
 echo "Linking dotfiles..."
