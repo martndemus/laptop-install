@@ -4,11 +4,11 @@ set -euo pipefail
 # shellcheck source=../lib/colors.sh
 source "$(cd "$(dirname "$0")" && pwd)/../lib/colors.sh"
 
-dotfiles="$HOME/Projects/dotfiles"
+dotfiles="$DOTFILES_DIR"
 
 if [[ ! -d "$dotfiles/.git" ]]; then
   print_step "Cloning dotfiles..."
-  git clone "https://github.com/martndemus/dotfiles.git" "$dotfiles"
+  git clone "$DOTFILES_REPO" "$dotfiles"
 else
   print_step "Pulling latest dotfiles..."
   git -C "$dotfiles" pull --ff-only

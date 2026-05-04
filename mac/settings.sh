@@ -79,8 +79,9 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 15 '{"enabled" = 0;}' 16 '{"enabled" = 0;}' 17 '{"enabled" = 0;}' 18 '{"enabled" = 0;}' 19 '{"enabled" = 0;}' 20 '{"enabled" = 0;}' 21 '{"enabled" = 0;}' 22 '{"enabled" = 0;}' 23 '{"enabled" = 0;}' 24 '{"enabled" = 0;}' 25 '{"enabled" = 0;}' 26 '{"enabled" = 0;}' 164 '{"enabled" = 0;}'
 
 # Language & locale
-defaults write NSGlobalDomain AppleLanguages -array "en-US" "nl"
-defaults write NSGlobalDomain AppleLocale -string "en_US"
+locale_dash="${LOCALE/_/-}"
+defaults write NSGlobalDomain AppleLanguages -array "$locale_dash"
+defaults write NSGlobalDomain AppleLocale -string "$LOCALE"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 
@@ -129,7 +130,7 @@ defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
 defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
 
 # Security
-sudo systemsetup -settimezone "Europe/Amsterdam" > /dev/null
+sudo systemsetup -settimezone "$TIMEZONE" > /dev/null
 echo yes | sudo systemsetup -setremotelogin off > /dev/null
 sudo systemsetup -setremoteappleevents off > /dev/null
 sudo systemsetup -setwakeonnetworkaccess off > /dev/null

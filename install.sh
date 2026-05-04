@@ -6,6 +6,10 @@ steps_dir="$here/steps"
 # shellcheck source=lib/colors.sh
 source "$here/lib/colors.sh"
 
+[[ -f "$here/.env" ]] || cp "$here/.env.example" "$here/.env"
+# shellcheck source=../.env.example
+source "$here/.env"
+
 # Discover steps from steps/NN-name.sh, ordered by filename.
 ALL_STEPS=()
 declare -a STEP_FILES=()
