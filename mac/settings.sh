@@ -130,7 +130,7 @@ defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -boo
 
 # Security
 sudo systemsetup -settimezone "Europe/Amsterdam" > /dev/null
-sudo systemsetup -setremotelogin off > /dev/null
+echo yes | sudo systemsetup -setremotelogin off > /dev/null
 sudo systemsetup -setremoteappleevents off > /dev/null
 sudo systemsetup -setwakeonnetworkaccess off > /dev/null
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
