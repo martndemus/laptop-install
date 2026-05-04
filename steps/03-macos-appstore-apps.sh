@@ -8,7 +8,7 @@ source "$(cd "$(dirname "$0")" && pwd)/../lib/colors.sh"
 
 [[ "$(uname -s)" == "Darwin" ]] || { echo "Skipping: not macOS."; exit 0; }
 
-brew install mas
+brew install -q mas
 
 print_step "Installing App Store apps..."
 while IFS= read -r line; do
