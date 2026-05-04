@@ -16,9 +16,9 @@ exec "$repo/install.sh" "\$@"
 EOF
 chmod +x "$bin_dir/laptop-update"
 
-echo "==> Installed laptop-update to $bin_dir/laptop-update"
+print_step "Installed laptop-update to $bin_dir/laptop-update"
 
 case ":$PATH:" in
   *":$bin_dir:"*) ;;
-  *) echo "${YELLOW}Warning: $bin_dir is not on your PATH.${RESET}" ;;
+  *) print_warn "$bin_dir is not on your PATH." ;;
 esac

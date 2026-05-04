@@ -76,6 +76,6 @@ if defaults write com.apple.Safari IncludeDevelopMenu -bool true 2>/dev/null; th
   defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
   defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
 else
-  echo "${YELLOW}Warning: Skipped Safari settings: grant Full Disk Access to your terminal app in"
-  echo "  System Settings > Privacy & Security > Full Disk Access, then re-run.${RESET}"
+  print_warn "Skipped Safari settings: grant Full Disk Access to your terminal app in"
+  echo "  System Settings > Privacy & Security > Full Disk Access, then re-run."
 fi

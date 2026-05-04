@@ -13,3 +13,7 @@ else
   YELLOW=''
   RESET=''
 fi
+
+print_step() { echo "==> $*"; }
+print_ok()   { echo "${GREEN}$*${RESET}"; }
+print_warn() { echo "${YELLOW}Warning: $*${RESET}"; }

@@ -8,7 +8,7 @@ source "$(cd "$(dirname "$0")" && pwd)/../lib/colors.sh"
 
 printf "==> Checking for Full Disk Access ..."
 if sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "SELECT 1" &>/dev/null; then
-  echo "${GREEN} granted!${RESET}"
+  print_ok " granted!"
 else
   echo ""
   echo "    Full Disk Access is required."
@@ -23,7 +23,7 @@ fi
 
 printf "==> Checking for Command Line Tools ..."
 if xcode-select -p &>/dev/null; then
-  echo "${GREEN} found!${RESET}"
+  print_ok " found!"
   exit 0
 fi
 

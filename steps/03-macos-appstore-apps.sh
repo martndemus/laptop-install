@@ -3,12 +3,14 @@
 set -euo pipefail
 
 here="$(dirname "$0")"
+# shellcheck source=../lib/colors.sh
+source "$(cd "$(dirname "$0")" && pwd)/../lib/colors.sh"
 
 [[ "$(uname -s)" == "Darwin" ]] || { echo "Skipping: not macOS."; exit 0; }
 
 brew install mas
 
-echo "==> Installing App Store apps..."
+print_step "Installing App Store apps..."
 while IFS= read -r line; do
   id="${line%%#*}"
   id="${id%"${id##*[![:space:]]}"}"
