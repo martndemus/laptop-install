@@ -21,10 +21,11 @@ chmod 755 /opt/homebrew/share
 
 formulae=()
 while IFS= read -r pkg; do formulae+=("$pkg"); done < "$here/../brew/formulae"
-brew install "${formulae[@]}"
+brew install -q "${formulae[@]}"
 
 casks=()
 while IFS= read -r pkg; do casks+=("$pkg"); done < "$here/../brew/casks"
-brew install --cask "${casks[@]}"
+brew install -q --cask "${casks[@]}"
 
-brew cleanup --prune=all
+brew upgrade -gq
+brew cleanup -q --prune=all
