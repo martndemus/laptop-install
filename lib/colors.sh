@@ -14,6 +14,19 @@ else
   RESET=''
 fi
 
+print_banner() {
+  local label=" $1 "
+  local color="${2:-$BLUE}"
+  local pad=$(( (80 - ${#label}) / 2 ))
+  local rpad=$(( 80 - ${#label} - pad ))
+  echo ""
+  printf "${BOLD}%s${color}%s${RESET}${BOLD}%s${RESET}\n" \
+    "$(printf '%*s' "$pad" '' | tr ' ' '=')" \
+    "$label" \
+    "$(printf '%*s' "$rpad" '' | tr ' ' '=')"
+  echo ""
+}
+
 print_step() { echo "==> $*"; }
 print_ok()   { echo "${GREEN}$*${RESET}"; }
 print_warn() { echo "${YELLOW}Warning: $*${RESET}"; }
